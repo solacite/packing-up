@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlaq3f3hiu07f"
-path="res://.godot/imported/godotwaka.png-ef0518417b4f997d237759e5551dd05d.ctex"
+uid="uid://y3q56t4hjlht"
+path="res://.godot/imported/run.png-b856ad1bdb949a37fa0c2e9498dffd43.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/godotwaka.png"
-dest_files=["res://.godot/imported/godotwaka.png-ef0518417b4f997d237759e5551dd05d.ctex"]
+source_file="res://assets/hana_caraka/run.png"
+dest_files=["res://.godot/imported/run.png-b856ad1bdb949a37fa0c2e9498dffd43.ctex"]
 
 [params]
 

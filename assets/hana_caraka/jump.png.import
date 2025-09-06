@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkqv5mmp0ataj"
-path="res://.godot/imported/icon.jpg-64f68b30ea939aa8019167e67dffb2db.ctex"
+uid="uid://bn264uljli6cu"
+path="res://.godot/imported/jump.png-3742448566d7a0a295b9517dca18425e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/icon.jpg"
-dest_files=["res://.godot/imported/icon.jpg-64f68b30ea939aa8019167e67dffb2db.ctex"]
+source_file="res://assets/hana_caraka/jump.png"
+dest_files=["res://.godot/imported/jump.png-3742448566d7a0a295b9517dca18425e.ctex"]
 
 [params]
 
