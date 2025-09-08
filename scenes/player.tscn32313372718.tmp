@@ -1,7 +1,7 @@
-[gd_scene load_steps=119 format=3 uid="uid://cejt2xnh4kqgr"]
+[gd_scene load_steps=118 format=3 uid="uid://cejt2xnh4kqgr"]
 
 [ext_resource type="Texture2D" uid="uid://ca86yydt65j10" path="res://assets/hana_caraka/death.png" id="1_qlg0r"]
-[ext_resource type="Script" uid="uid://gn1o3g585er8" path="res://scripts/player.gd" id="1_tuyoq"]
+[ext_resource type="Script" uid="uid://gn1o3g585er8" path="res://scenes/player.gd" id="1_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://o1ifirl4xik8" path="res://assets/hana_caraka/hurt.png" id="2_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://486x465hs7s" path="res://assets/hana_caraka/idle.png" id="3_fjrip"]
 [ext_resource type="Texture2D" uid="uid://bn264uljli6cu" path="res://assets/hana_caraka/jump.png" id="4_smehm"]
@@ -860,8 +860,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
 size = Vector2(13, 13)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
-
 [node name="Player" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -877,8 +875,3 @@ shape = SubResource("RectangleShape2D_qlg0r")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(7.43, 7.43)
-
-[node name="Grabber" type="Area2D" parent="CharacterBody2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Grabber"]
-shape = SubResource("RectangleShape2D_fjrip")

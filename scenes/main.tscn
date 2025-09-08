@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceufrpolakk8a"]
+[gd_scene load_steps=8 format=3 uid="uid://ceufrpolakk8a"]
 
 [ext_resource type="Texture2D" uid="uid://oushrr1la5xu" path="res://assets/CosmicLilac_Tiles.png" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://cejt2xnh4kqgr" path="res://scenes/player.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://hlfe83dgx6xo" path="res://scripts/rigid_body_2d.gd" id="3_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://bnpulvk37kx8w" path="res://assets/hana_caraka/CosmicLilac_Tiles - Copy (2).png" id="3_sugp2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0wfyh"]
 texture = ExtResource("1_o5qli")
@@ -148,6 +150,9 @@ texture = ExtResource("1_o5qli")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0wfyh")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
+size = Vector2(15.894, 14.5695)
+
 [node name="Main" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -158,3 +163,15 @@ layer_0/tile_data = PackedInt32Array(655378, 327680, 2, 720913, 458752, 1, 78644
 [node name="Player" parent="." instance=ExtResource("2_0wfyh")]
 position = Vector2(392, 196)
 scale = Vector2(1.445, 1.445)
+
+[node name="Box" type="CharacterBody2D" parent="."]
+position = Vector2(359, 189)
+collision_layer = 2
+script = ExtResource("3_jyhfs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Box"]
+texture = ExtResource("3_sugp2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+scale = Vector2(0.450732, 0.404482)
+shape = SubResource("RectangleShape2D_jyhfs")
