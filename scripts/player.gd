@@ -6,6 +6,11 @@ extends CharacterBody2D
 @export var acceleration: float = 500.0
 @export var friction: float = 1200.0
 
+# pickup system
+@export var pickup_range: float = 50.0
+var held_box = null
+var nearby_boxes = []
+
 # state and direction management
 enum PlayerState { IDLE, WALK, RUN }
 var current_state: PlayerState = PlayerState.IDLE
@@ -25,16 +30,70 @@ func _physics_process(delta):
 	# get input once per frame
 	var input_vector = get_input_vector()
 	
-	# debug output
-	if input_vector != Vector2.ZERO:
-		print("Input vector: ", input_vector)
-		print("Velocity: ", velocity)
+	# Handle pickup/drop input
+	handle_pickup_input()
 	
 	handle_movement(delta, input_vector)
 	update_state(input_vector)
 	update_animations(input_vector)
 	
+	# Update held box position if we have one
+	if held_box:
+		held_box.global_position = global_position
+	
+	# Find nearby boxes
+	find_nearby_boxes()
+	
 	move_and_slide()
+
+func handle_pickup_input():
+	if Input.is_action_just_pressed("pickup"):  # You'll need to define this action
+		print("Pickup input detected")
+		
+		if held_box:
+			# Drop the box
+			print("Attempting to drop box")
+			drop_box()
+		else:
+			# Try to pick up a box
+			print("Attempting to pick up box")
+			pickup_nearest_box()
+
+func find_nearby_boxes():
+	nearby_boxes.clear()
+	var boxes = get_tree().get_nodes_in_group("boxes")
+	
+	for box in boxes:
+		if box != held_box:  # Don't include the box we're already holding
+			var distance = global_position.distance_to(box.global_position)
+			if distance <= pickup_range:
+				nearby_boxes.append(box)
+
+func pickup_nearest_box():
+	if nearby_boxes.is_empty():
+		print("No boxes nearby to pick up")
+		return
+	
+	# Find the closest box
+	var closest_box = null
+	var closest_distance = INF
+	
+	for box in nearby_boxes:
+		var distance = global_position.distance_to(box.global_position)
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_box = box
+	
+	if closest_box:
+		print("Picking up box at distance: ", closest_distance)
+		held_box = closest_box
+		held_box.pickup()
+
+func drop_box():
+	if held_box:
+		print("Dropping box")
+		held_box.drop()
+		held_box = null
 
 func handle_movement(delta: float, input_vector: Vector2):
 	var target_speed = get_target_speed(input_vector)
@@ -79,7 +138,7 @@ func update_animations(input_vector: Vector2):
 		PlayerState.RUN:
 			state_prefix = "run"
 	
-	# handle sprite flipping for left/right movement
+	# Handle sprite flipping for left/right movement
 	if direction_string == "_left":
 		sprite.flip_h = true
 		direction_string = "_right"  # Use right animations but flipped

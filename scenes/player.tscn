@@ -865,6 +865,7 @@ size = Vector2(13, 13)
 [node name="Player" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+scale = Vector2(0.827293, 0.777079)
 script = ExtResource("1_tuyoq")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
@@ -879,6 +880,8 @@ shape = SubResource("RectangleShape2D_qlg0r")
 zoom = Vector2(7.43, 7.43)
 
 [node name="Grabber" type="Area2D" parent="CharacterBody2D"]
+position = Vector2(-14, -11)
+scale = Vector2(-0.348, -0.365)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Grabber"]
 shape = SubResource("RectangleShape2D_fjrip")
