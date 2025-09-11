@@ -6,6 +6,7 @@ lug a package around a tiny world to the best of your ability.
 
 press Q to pick up/put down the box
 WASD to move
+hold shift to run
 
 // instructions:
 
